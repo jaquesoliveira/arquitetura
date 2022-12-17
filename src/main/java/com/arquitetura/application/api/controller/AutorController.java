@@ -23,8 +23,11 @@ public class AutorController {
 	@Autowired
 	private AutorRepositoryImpl autorRepositoryImpl;	
 	
-	@Autowired
 	private AutorDomainServiceImpl autorDomainServiceImpl;
+		
+	public AutorController() {
+		autorDomainServiceImpl = new AutorDomainServiceImpl();;
+	}
 	
 	@GetMapping
 	public List<Autor> listAll(){

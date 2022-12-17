@@ -10,6 +10,10 @@ public class Autor implements AutorEntity{
 	public Autor() {
 		
 	}
+	
+	public Autor(String name) {		
+		this.name = name;
+	}
 
 	public Autor(Long id, String name) {
 		super();
@@ -46,5 +50,4 @@ public class Autor implements AutorEntity{
 		Autor other = (Autor) obj;
 		return Objects.equals(id, other.id);
 	}	
-	
 }

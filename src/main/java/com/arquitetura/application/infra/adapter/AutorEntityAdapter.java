@@ -9,9 +9,9 @@ import com.arquitetura.infra.entity.AutorEntityDb;
 
 public class AutorEntityAdapter {
 	
-	private List<AutorEntityDb> listAutorEntityDb;
-	
+	private List<AutorEntityDb> listAutorEntityDb;	
 	private AutorEntity autor;
+	
 	
 	public AutorEntityAdapter(AutorEntityDb autorEntityDb) {
 		this.autor = autorEntityDb;
@@ -24,7 +24,9 @@ public class AutorEntityAdapter {
 	public AutorEntityAdapter(List<AutorEntityDb> listAutorEntity) {
 		this.listAutorEntityDb = listAutorEntity;
 	}
-
+	
+	
+	
 	public Autor toAutor() {
 		return (Autor) autor;
 	}
@@ -33,6 +35,7 @@ public class AutorEntityAdapter {
 		return (AutorEntityDb) autor;
 	}
 	
+	
 	public List<Autor> toListAutor(){
 		List<Autor> autores = listAutorEntityDb.stream()
 				.map(aut -> new Autor(aut.getId(), aut.getName()))
@@ -40,12 +43,4 @@ public class AutorEntityAdapter {
 		
 		return autores;
 	}
-	
-//    public List<AutorEntityDb> toListAutorEntityDb(){
-//    	List<AutorEntityDb> listAutorEntityDb = listAutorEntityDb.stream()
-//				.map(aut -> new AutorEntityDb(aut.getId(), aut.getName()))
-//				.collect(Collectors.toList());
-//		
-//		return listAutorEntityDb;
-//	}
 }
