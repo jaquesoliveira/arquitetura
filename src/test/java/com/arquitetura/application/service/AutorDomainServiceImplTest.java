@@ -36,7 +36,7 @@ public class AutorDomainServiceImplTest {
 		Autor autor = new Autor(null, "sac");
 		
 		Exception exception = assertThrows(RuntimeException.class, 
-				() -> {autorDomainServiceImpl.validarEditAutor(autor);});
+				() -> { autorDomainServiceImpl.validarEditAutor(autor); });
 		
 		String mensagemEsperada = "Id e Nome do Autor são obrigatórios!";
 		String mensagemRecebida = exception.getMessage();
