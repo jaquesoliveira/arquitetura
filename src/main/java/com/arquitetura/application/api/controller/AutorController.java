@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.arquitetura.application.service.AutorDomainServiceImpl;
 import com.arquitetura.domain.entity.Autor;
-import com.arquitetura.infra.spring.AutorRepositoryImpl;
+import com.arquitetura.infra.spring.AutorDomainRepositoryImpl;
 
 @RestController
 @RequestMapping("autor")
 public class AutorController {
 
 	@Autowired
-	private AutorRepositoryImpl autorRepositoryImpl;	
+	private AutorDomainRepositoryImpl autorRepositoryImpl;	
 	
 	private AutorDomainServiceImpl autorDomainServiceImpl;
 		
@@ -31,7 +31,7 @@ public class AutorController {
 	
 	@GetMapping
 	public List<Autor> listAll(){
-		return autorRepositoryImpl.listarAutores();
+		return autorRepositoryImpl.listarTodos();
 	}	
 	
 	@PostMapping
@@ -40,10 +40,10 @@ public class AutorController {
 		return autorRepositoryImpl.salvar(autor);
 	}
 	
-	@PutMapping()
+	@PutMapping
 	public Autor edit(@RequestBody Autor autor) {
 		autorDomainServiceImpl.validarEditAutor(autor);
-		return autorRepositoryImpl.salvar(autor);
+		return autorRepositoryImpl.alterar(autor);
 	}
 	
 	@DeleteMapping("/{id}")

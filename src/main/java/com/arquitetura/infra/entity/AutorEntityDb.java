@@ -1,17 +1,31 @@
 package com.arquitetura.infra.entity;
 
-import java.beans.Transient;
+import java.io.Serializable;
+import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.domain.entity.AutorEntity;
 
 @Entity
-@Table
-public class AutorEntityDb implements AutorEntity{
+@Table(name="AUT_AUTOR")
+@SequenceGenerator(name = "SEQ_AUT_AUTOR", allocationSize = 1, initialValue = 1)
+public class AutorEntityDb implements AutorEntity, Serializable {
+	
+	private static final long serialVersionUID = -5365041273345444159L;
+
+	@Id
+	@GeneratedValue(generator = "SEQ_AUT_AUTOR", strategy = GenerationType.SEQUENCE)
+	@Column(name="AUT_ID")
 	private Long id;
+	
+	@Column(name="AUT_NOME")
 	private String name;
 	
 	public AutorEntityDb() {
@@ -36,10 +50,21 @@ public class AutorEntityDb implements AutorEntity{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	@Transient
-    public Autor toAutor(AutorEntityDb autorEntityDb) {
-		return new Autor(this.id, this.name);
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AutorEntityDb other = (AutorEntityDb) obj;
+		return Objects.equals(id, other.id);
+	}
 }

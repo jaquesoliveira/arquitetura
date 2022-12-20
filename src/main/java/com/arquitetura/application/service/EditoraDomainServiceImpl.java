@@ -10,7 +10,7 @@ public class EditoraDomainServiceImpl implements EditorDomainService{
 		
 		verificarSeEditoraEhNula(editora);
 		
-		if (editora.getName() == null || editora.getName().isEmpty()) {
+		if ( editora.getName() == null || editora.getName().isEmpty() ) {
 			throw new RuntimeException("O nome da editora é obrigatório!");
 		}
 	}
@@ -19,13 +19,14 @@ public class EditoraDomainServiceImpl implements EditorDomainService{
 	public void validarEditEditora(Editora editora) {
 		verificarSeEditoraEhNula(editora);
 		
-		if (editora.getName() == null || editora.getName().isEmpty()) {
+		if ( editora.getId() == null 
+				|| (editora.getName() == null || editora.getName().isEmpty()) ) {
 			throw new RuntimeException("Id e Nome da Editora são obrigatórios!");
 		}
 	}
 
 	private void verificarSeEditoraEhNula(Editora editora) {
-		if (editora == null) {
+		if ( editora == null ) {
 			throw new RuntimeException("Editora não pode ser nula!");
 		}
 	}

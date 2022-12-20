@@ -46,7 +46,7 @@ class EditoraDomainServiceImplTest {
 	
 	@Test
 	public void deveRetornarException_QuandoIdOuNomeForNulo_OuONomeForVazio() {
-		Editora editora = new Editora(null, "sac");
+		Editora editora = new Editora(null, "asd");
 		
 		Exception exception = assertThrows(RuntimeException.class, 
 				() -> { editoraDomainServiceImpl.validarEditEditora(editora); });

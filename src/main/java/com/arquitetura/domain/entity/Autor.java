@@ -1,8 +1,11 @@
 package com.arquitetura.domain.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Autor implements AutorEntity{
+public class Autor implements AutorEntity, Serializable{
+	
+	private static final long serialVersionUID = 2372677270268422121L;
 	
 	private Long id;
 	private String name;
