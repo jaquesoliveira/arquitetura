@@ -27,7 +27,7 @@ public class LivroDomainServiceImpl implements LivroDomainService {
 
 	private void verificaSeTituloDoLivroEhVazio(Livro livro) {
 		if (livro.getTitle().isEmpty()) {
-			throw new RuntimeException("Título não pode ser nulo!");
+			throw new RuntimeException("Título não pode ser vazio!");
 		}
 	}
 
