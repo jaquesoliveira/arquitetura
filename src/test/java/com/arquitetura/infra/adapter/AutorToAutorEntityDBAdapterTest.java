@@ -12,13 +12,8 @@ class AutorToAutorEntityDBAdapterTest {
 
 	@Test
 	void test() {
-				
 		Autor autor = new Autor();		
 		AutorEntityDb entityDb = new AutorToAutorEntityDBAdapter(autor).toAutorEntityDb();
-		
-		System.out.println(autor);
-		
-		System.out.println(entityDb);
 		
 		assertInstanceOf(AutorEntityDb.class, entityDb);
 	}
