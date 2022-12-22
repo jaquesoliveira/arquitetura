@@ -1,5 +1,5 @@
 package com.arquitetura.infra.adapter;
 
-public class LivroToLivroEntityDb {
+public class LivroToLivroEntityDbAdapter {
 
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.domain.repository.AutorDomainRepository;
-import com.arquitetura.infra.adapter.AutorEntityDbAdapterToAutor;
+import com.arquitetura.infra.adapter.AutorEntityDbToAutorAdapter;
 import com.arquitetura.infra.adapter.AutorToAutorEntityDBAdapter;
 import com.arquitetura.infra.entity.AutorEntityDb;
 
@@ -23,7 +23,7 @@ public class AutorDomainRepositoryImpl implements AutorDomainRepository{
 		AutorEntityDb entityDbSalvo = repositorySpring
 				.save(new AutorToAutorEntityDBAdapter(autor).toAutorEntityDb());
 		
-		return new AutorEntityDbAdapterToAutor(entityDbSalvo).toAutor();
+		return new AutorEntityDbToAutorAdapter(entityDbSalvo).toAutor();
 	}
 
 	@Override
@@ -39,14 +39,14 @@ public class AutorDomainRepositoryImpl implements AutorDomainRepository{
 	@Override
 	public List<Autor> listarTodos() {
 		List<AutorEntityDb> listResult = repositorySpring.findAll();		
-		return new AutorEntityDbAdapterToAutor(listResult).toListAutor();
+		return new AutorEntityDbToAutorAdapter(listResult).toListAutor();
 	}
 
 	@Override
 	public Autor consultarPorId(Long id) {
 		Optional<AutorEntityDb> result = repositorySpring.findById(id);
 		if (result.isPresent()) {
-			return new AutorEntityDbAdapterToAutor(result.get()).toAutor() ;
+			return new AutorEntityDbToAutorAdapter(result.get()).toAutor() ;
 		}
 		return null;
 	}

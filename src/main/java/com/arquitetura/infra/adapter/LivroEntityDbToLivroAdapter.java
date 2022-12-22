@@ -3,11 +3,11 @@ package com.arquitetura.infra.adapter;
 import com.arquitetura.domain.entity.Livro;
 import com.arquitetura.infra.entity.LivroEntityDb;
 
-public class LivroEntityDbToLivro {
+public class LivroEntityDbToLivroAdapter {
 	
 	private LivroEntityDb livroEntityDb;
 	
-	public LivroEntityDbToLivro(LivroEntityDb livroEntityDb) {
+	public LivroEntityDbToLivroAdapter(LivroEntityDb livroEntityDb) {
 		this.livroEntityDb = livroEntityDb;
 	}
 	
@@ -16,10 +16,9 @@ public class LivroEntityDbToLivro {
 		Livro livro = new Livro();
 		livro.setId(livroEntityDb.getId());
 		livro.setTitle(livroEntityDb.getTitle());
-		livro.setAutor(new AutorEntityDbAdapterToAutor(livroEntityDb.getAutorEntityDb()).toAutor() );
-		livro.setEditora(new EditoraEntityDbToEditora( livroEntityDb.getEditoraEntityDb()).toEditora());
+		livro.setAutor(new AutorEntityDbToAutorAdapter(livroEntityDb.getAutorEntityDb()).toAutor() );
+		livro.setEditora(new EditoraEntityDbToEditoraAdapter( livroEntityDb.getEditoraEntityDb()).toEditora());
 		
 		return livro;
 	}
-
 }

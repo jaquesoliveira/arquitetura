@@ -10,16 +10,16 @@ import com.arquitetura.infra.entity.AutorEntityDb;
  * @author Jaques Oliveira 
  *
  */
-public class AutorEntityDbAdapterToAutor {
+public class AutorEntityDbToAutorAdapter {
 	
 	private AutorEntityDb autorEntityDb;	
 	private List<AutorEntityDb> listAutorEntityDb;
 
-	public AutorEntityDbAdapterToAutor(AutorEntityDb autorEntityDb) {
+	public AutorEntityDbToAutorAdapter(AutorEntityDb autorEntityDb) {
 		this.autorEntityDb = autorEntityDb;
 	}
 	
-	public AutorEntityDbAdapterToAutor(List<AutorEntityDb> listAutorEntityDb) {
+	public AutorEntityDbToAutorAdapter(List<AutorEntityDb> listAutorEntityDb) {
 		this.listAutorEntityDb = listAutorEntityDb;
 	}
 		
