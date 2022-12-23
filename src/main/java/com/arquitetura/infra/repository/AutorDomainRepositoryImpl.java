@@ -1,4 +1,4 @@
-package com.arquitetura.infra.spring;
+package com.arquitetura.infra.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,11 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.arquitetura.application.exceptions.AutorNotFoundException;
 import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.domain.repository.AutorDomainRepository;
 import com.arquitetura.infra.adapter.AutorEntityDbToAutorAdapter;
 import com.arquitetura.infra.adapter.AutorToAutorEntityDBAdapter;
 import com.arquitetura.infra.entity.AutorEntityDb;
+import com.arquitetura.infra.spring.AutorRepositorySpring;
 
 @Repository
 public class AutorDomainRepositoryImpl implements AutorDomainRepository{
@@ -45,9 +47,10 @@ public class AutorDomainRepositoryImpl implements AutorDomainRepository{
 	@Override
 	public Autor consultarPorId(Long id) {
 		Optional<AutorEntityDb> result = repositorySpring.findById(id);
-		if (result.isPresent()) {
-			return new AutorEntityDbToAutorAdapter(result.get()).toAutor() ;
-		}
-		return null;
+		if (!result.isPresent()) {
+			return null; 
+		}	
+		
+		return new AutorEntityDbToAutorAdapter(result.get()).toAutor() ;
 	}
 }

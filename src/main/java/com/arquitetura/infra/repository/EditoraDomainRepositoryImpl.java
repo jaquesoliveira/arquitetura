@@ -1,4 +1,4 @@
-package com.arquitetura.infra.spring;
+package com.arquitetura.infra.repository;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import com.arquitetura.domain.repository.EditoraDomainRepository;
 import com.arquitetura.infra.adapter.EditoraEntityDbToEditoraAdapter;
 import com.arquitetura.infra.adapter.EditoraToEditoraEntityDbAdapter;
 import com.arquitetura.infra.entity.EditoraEntityDb;
+import com.arquitetura.infra.spring.EditoraRepositorySpring;
 
 public class EditoraDomainRepositoryImpl implements EditoraDomainRepository {
 	

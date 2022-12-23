@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.arquitetura.application.service.EditoraDomainServiceImpl;
 import com.arquitetura.domain.entity.Editora;
-import com.arquitetura.infra.spring.EditoraDomainRepositoryImpl;
+import com.arquitetura.infra.repository.EditoraDomainRepositoryImpl;
 
 public class EditoraController {
 

@@ -2,7 +2,7 @@ package com.arquitetura.application.api.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,42 +12,49 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arquitetura.application.service.AutorDomainServiceImpl;
+import com.arquitetura.application.exceptions.AutorNotFoundException;
+import com.arquitetura.application.facade.AutorFacade;
 import com.arquitetura.domain.entity.Autor;
-import com.arquitetura.infra.spring.AutorDomainRepositoryImpl;
 
 @RestController
 @RequestMapping("autor")
 public class AutorController {
-
-	@Autowired
-	private AutorDomainRepositoryImpl autorRepositoryImpl;	
-	
-	private AutorDomainServiceImpl autorDomainServiceImpl;
 		
-	public AutorController() {
-		autorDomainServiceImpl = new AutorDomainServiceImpl();;
+	AutorFacade autorFacade;
+		
+	public AutorController(AutorFacade autorFacade) {
+		this.autorFacade = autorFacade;
 	}
 	
 	@GetMapping
 	public List<Autor> listAll(){
-		return autorRepositoryImpl.listarTodos();
+		return autorFacade.listAll();
 	}	
 	
 	@PostMapping
 	public Autor save(@RequestBody Autor autor) {
-		autorDomainServiceImpl.validarSaveAutor(autor);
-		return autorRepositoryImpl.salvar(autor);
+		return autorFacade.salvar(autor);
 	}
 	
 	@PutMapping
 	public Autor edit(@RequestBody Autor autor) {
-		autorDomainServiceImpl.validarEditAutor(autor);
-		return autorRepositoryImpl.alterar(autor);
+		return autorFacade.edit(autor);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void ecluir(@PathVariable Long id) {
-		autorRepositoryImpl.excluir(id);
+		autorFacade.excluir(id);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> consultarPorId(@PathVariable Long id) {
+		
+		Autor result = autorFacade.consultarPorId(id);
+		if (result == null) {
+			throw new AutorNotFoundException();
+		}
+		
+		return ResponseEntity.ok()
+				.body(result);
 	}
 }
