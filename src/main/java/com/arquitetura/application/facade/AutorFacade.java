@@ -4,18 +4,18 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.arquitetura.application.service.AutorDomainServiceImpl;
+import com.arquitetura.application.useCases.AutorUsecaseImpl;
 import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.infra.repository.AutorDomainRepositoryImpl;
 
 public class AutorFacade {
 	
 	private AutorDomainRepositoryImpl autorRepositoryImpl;	
-	private AutorDomainServiceImpl autorDomainServiceImpl;
+	private AutorUsecaseImpl autorDomainServiceImpl;
 		
 	public AutorFacade(AutorDomainRepositoryImpl autorRepositoryImpl ) {
 		this.autorRepositoryImpl = autorRepositoryImpl;
-		this.autorDomainServiceImpl = new AutorDomainServiceImpl();
+		this.autorDomainServiceImpl = new AutorUsecaseImpl();
 	}
 	
 	public List<Autor> listAll(){

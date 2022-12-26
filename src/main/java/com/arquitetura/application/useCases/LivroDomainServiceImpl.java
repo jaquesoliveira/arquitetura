@@ -1,7 +1,7 @@
-package com.arquitetura.application.service;
+package com.arquitetura.application.useCases;
 
 import com.arquitetura.domain.entity.Livro;
-import com.arquitetura.domain.service.LivroDomainService;
+import com.arquitetura.domain.useCases.LivroDomainService;
 
 public class LivroDomainServiceImpl implements LivroDomainService {
 

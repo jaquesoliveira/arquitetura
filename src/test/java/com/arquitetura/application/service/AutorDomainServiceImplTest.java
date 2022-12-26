@@ -6,15 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.arquitetura.application.useCases.AutorUsecaseImpl;
 import com.arquitetura.domain.entity.Autor;
 
 public class AutorDomainServiceImplTest {
 	
-	AutorDomainServiceImpl autorDomainServiceImpl;
+	AutorUsecaseImpl autorDomainServiceImpl;
 	
 	@BeforeEach
 	public void config() {
-		autorDomainServiceImpl = new AutorDomainServiceImpl();
+		autorDomainServiceImpl = new AutorUsecaseImpl();
 	}
 
 	@Test

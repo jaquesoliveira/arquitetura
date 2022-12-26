@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.arquitetura.application.useCases.LivroDomainServiceImpl;
 import com.arquitetura.domain.entity.Livro;
 
 

@@ -1,4 +1,4 @@
-package com.arquitetura.domain.service;
+package com.arquitetura.domain.useCases;
 
 import com.arquitetura.domain.entity.Livro;
 

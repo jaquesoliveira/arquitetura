@@ -1,7 +1,7 @@
-package com.arquitetura.application.service;
+package com.arquitetura.application.useCases;
 
 import com.arquitetura.domain.entity.Editora;
-import com.arquitetura.domain.service.EditorDomainService;
+import com.arquitetura.domain.useCases.EditorDomainService;
 
 public class EditoraDomainServiceImpl implements EditorDomainService{
 

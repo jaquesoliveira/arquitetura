@@ -1,9 +1,9 @@
-package com.arquitetura.application.service;
+package com.arquitetura.application.useCases;
 
 import com.arquitetura.domain.entity.Autor;
-import com.arquitetura.domain.service.AutorDomainService;
+import com.arquitetura.domain.useCases.AutorUseCase;
 
-public class AutorDomainServiceImpl implements AutorDomainService {
+public class AutorUsecaseImpl implements AutorUseCase {
 	
 	@Override
 	public void validarSaveAutor(Autor autor) {

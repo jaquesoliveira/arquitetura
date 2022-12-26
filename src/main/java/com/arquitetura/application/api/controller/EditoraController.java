@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.arquitetura.application.exceptions.AutorNotFoundException;
 import com.arquitetura.application.exceptions.EditoraNotFoundException;
-import com.arquitetura.application.service.EditoraDomainServiceImpl;
+import com.arquitetura.application.useCases.EditoraDomainServiceImpl;
 import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.domain.entity.Editora;
 import com.arquitetura.infra.repository.EditoraDomainRepositoryImpl;
