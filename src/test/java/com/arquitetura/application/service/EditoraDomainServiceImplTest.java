@@ -56,5 +56,4 @@ class EditoraDomainServiceImplTest {
 		
 		assertTrue(mensagemRecebida.contains(mensagemEsperada));
 	}
-
 }

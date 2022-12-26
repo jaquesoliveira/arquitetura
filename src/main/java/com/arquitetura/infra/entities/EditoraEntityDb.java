@@ -1,4 +1,4 @@
-package com.arquitetura.infra.entity;
+package com.arquitetura.infra.entities;
 
 import java.util.Objects;
 

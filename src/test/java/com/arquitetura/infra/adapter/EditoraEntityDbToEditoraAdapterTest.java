@@ -5,7 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import com.arquitetura.domain.entity.Editora;
-import com.arquitetura.infra.entity.EditoraEntityDb;
+import com.arquitetura.infra.converter.EditoraEntityDbToEditoraConverter;
+import com.arquitetura.infra.entities.EditoraEntityDb;
 
 class EditoraEntityDbToEditoraAdapterTest {
 
@@ -14,6 +15,6 @@ class EditoraEntityDbToEditoraAdapterTest {
 		EditoraEntityDb editoraEntityDb = new EditoraEntityDb();
 		
 		assertInstanceOf(Editora.class, 
-				new EditoraEntityDbToEditoraAdapter(editoraEntityDb).toEditora());   
+				new EditoraEntityDbToEditoraConverter(editoraEntityDb).toEditora());   
 	}
 }

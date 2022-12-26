@@ -1,4 +1,4 @@
-package com.arquitetura.application.api.responseDTO;
+package com.arquitetura.application.exceptions;
 
 
 import java.util.Date;
@@ -11,14 +11,12 @@ import lombok.Data;
 public class AutorErroDTO {
 
 	private String mensagem;
-	private Autor content;
 	private Integer status;
 	private Date date;
 	
 	
-	public AutorErroDTO(String mensagem, Autor data, Integer status, Date date) {
+	public AutorErroDTO(String mensagem, Integer status, Date date) {
 		this.mensagem = mensagem;
-		this.content = data;
 		this.status = status;
 		this.date = date;
 	}

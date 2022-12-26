@@ -1,22 +1,22 @@
-package com.arquitetura.infra.adapter;
+package com.arquitetura.infra.converter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.arquitetura.domain.entity.Editora;
-import com.arquitetura.infra.entity.EditoraEntityDb;
+import com.arquitetura.infra.entities.EditoraEntityDb;
 
-public class EditoraEntityDbToEditoraAdapter {
+public class EditoraEntityDbToEditoraConverter {
 
 	private EditoraEntityDb editoraEntityDb;
 
 	private List<EditoraEntityDb> listEditoraEntityDb;
 
-	public EditoraEntityDbToEditoraAdapter(EditoraEntityDb editoraEntityDb) {
+	public EditoraEntityDbToEditoraConverter(EditoraEntityDb editoraEntityDb) {
 		this.editoraEntityDb = editoraEntityDb;
 	}
 
-	public EditoraEntityDbToEditoraAdapter(List<EditoraEntityDb> listEditoraEntityDb) {
+	public EditoraEntityDbToEditoraConverter(List<EditoraEntityDb> listEditoraEntityDb) {
 		this.listEditoraEntityDb = listEditoraEntityDb;
 	}
 

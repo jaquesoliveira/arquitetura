@@ -9,27 +9,35 @@ import org.springframework.stereotype.Repository;
 import com.arquitetura.application.exceptions.AutorNotFoundException;
 import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.domain.repository.AutorDomainRepository;
-import com.arquitetura.infra.adapter.AutorEntityDbToAutorAdapter;
-import com.arquitetura.infra.adapter.AutorToAutorEntityDBAdapter;
-import com.arquitetura.infra.entity.AutorEntityDb;
+import com.arquitetura.infra.converter.AutorEntityDbToAutorConverter;
+import com.arquitetura.infra.converter.AutorToAutorEntityDBConverter;
+import com.arquitetura.infra.entities.AutorEntityDb;
 import com.arquitetura.infra.spring.AutorRepositorySpring;
 
-@Repository
 public class AutorDomainRepositoryImpl implements AutorDomainRepository{
 	
-	@Autowired
 	private AutorRepositorySpring repositorySpring;
+	
+	public AutorDomainRepositoryImpl(AutorRepositorySpring repositorySpring) {
+		this.repositorySpring = repositorySpring;
+	}
 
 	@Override
 	public Autor salvar(Autor autor) {
 		AutorEntityDb entityDbSalvo = repositorySpring
-				.save(new AutorToAutorEntityDBAdapter(autor).toAutorEntityDb());
+				.save(new AutorToAutorEntityDBConverter(autor).toAutorEntityDb());
 		
-		return new AutorEntityDbToAutorAdapter(entityDbSalvo).toAutor();
+		return new AutorEntityDbToAutorConverter(entityDbSalvo).toAutor();
 	}
 
 	@Override
 	public Autor alterar(Autor autor) {
+		
+		Autor autorFound = consultarPorId(autor.getId());		
+		if(autorFound == null) {
+			throw new AutorNotFoundException();
+		}
+		
 		return salvar(autor);
 	}
 
@@ -41,7 +49,7 @@ public class AutorDomainRepositoryImpl implements AutorDomainRepository{
 	@Override
 	public List<Autor> listarTodos() {
 		List<AutorEntityDb> listResult = repositorySpring.findAll();		
-		return new AutorEntityDbToAutorAdapter(listResult).toListAutor();
+		return new AutorEntityDbToAutorConverter(listResult).toListAutor();
 	}
 
 	@Override
@@ -51,6 +59,6 @@ public class AutorDomainRepositoryImpl implements AutorDomainRepository{
 			return null; 
 		}	
 		
-		return new AutorEntityDbToAutorAdapter(result.get()).toAutor() ;
+		return new AutorEntityDbToAutorConverter(result.get()).toAutor() ;
 	}
 }

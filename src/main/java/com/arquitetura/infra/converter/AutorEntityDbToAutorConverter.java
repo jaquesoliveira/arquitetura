@@ -1,25 +1,25 @@
-package com.arquitetura.infra.adapter;
+package com.arquitetura.infra.converter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.arquitetura.domain.entity.Autor;
-import com.arquitetura.infra.entity.AutorEntityDb;
+import com.arquitetura.infra.entities.AutorEntityDb;
 
 /**
  * @author Jaques Oliveira 
  *
  */
-public class AutorEntityDbToAutorAdapter {
+public class AutorEntityDbToAutorConverter {
 	
 	private AutorEntityDb autorEntityDb;	
 	private List<AutorEntityDb> listAutorEntityDb;
 
-	public AutorEntityDbToAutorAdapter(AutorEntityDb autorEntityDb) {
+	public AutorEntityDbToAutorConverter(AutorEntityDb autorEntityDb) {
 		this.autorEntityDb = autorEntityDb;
 	}
 	
-	public AutorEntityDbToAutorAdapter(List<AutorEntityDb> listAutorEntityDb) {
+	public AutorEntityDbToAutorConverter(List<AutorEntityDb> listAutorEntityDb) {
 		this.listAutorEntityDb = listAutorEntityDb;
 	}
 		

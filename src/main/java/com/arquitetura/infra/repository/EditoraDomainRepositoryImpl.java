@@ -2,25 +2,26 @@ package com.arquitetura.infra.repository;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.arquitetura.domain.entity.Editora;
 import com.arquitetura.domain.repository.EditoraDomainRepository;
-import com.arquitetura.infra.adapter.EditoraEntityDbToEditoraAdapter;
-import com.arquitetura.infra.adapter.EditoraToEditoraEntityDbAdapter;
-import com.arquitetura.infra.entity.EditoraEntityDb;
+import com.arquitetura.infra.converter.EditoraEntityDbToEditoraConverter;
+import com.arquitetura.infra.converter.EditoraToEditoraEntityDbConverter;
+import com.arquitetura.infra.entities.EditoraEntityDb;
 import com.arquitetura.infra.spring.EditoraRepositorySpring;
 
 public class EditoraDomainRepositoryImpl implements EditoraDomainRepository {
 	
-	@Autowired
-	private EditoraRepositorySpring repositorySpring;
+	private EditoraRepositorySpring repositorySpring;	
+	
+	public EditoraDomainRepositoryImpl(EditoraRepositorySpring repositorySpring) {
+		this.repositorySpring = repositorySpring;
+	}
 
 	@Override
 	public Editora salvar(Editora entity) {
-		EditoraEntityDb editoraEntityDb = new EditoraToEditoraEntityDbAdapter(entity).toEditoraEntityDb();
+		EditoraEntityDb editoraEntityDb = new EditoraToEditoraEntityDbConverter(entity).toEditoraEntityDb();
 		
-		return new EditoraEntityDbToEditoraAdapter(
+		return new EditoraEntityDbToEditoraConverter(
 				repositorySpring.save(editoraEntityDb)).toEditora();
 	}
 
@@ -38,13 +39,11 @@ public class EditoraDomainRepositoryImpl implements EditoraDomainRepository {
 	public List<Editora> listarTodos() {
 		List<EditoraEntityDb> listEditoraEntityDb = repositorySpring.findAll();
 		
-		return new EditoraEntityDbToEditoraAdapter(listEditoraEntityDb).toListEditora();
+		return new EditoraEntityDbToEditoraConverter(listEditoraEntityDb).toListEditora();
 	}
 
 	@Override
 	public Editora consultarPorId(Long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

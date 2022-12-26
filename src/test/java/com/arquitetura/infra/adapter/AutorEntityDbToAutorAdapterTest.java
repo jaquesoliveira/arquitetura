@@ -8,7 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.arquitetura.domain.entity.Autor;
-import com.arquitetura.infra.entity.AutorEntityDb;
+import com.arquitetura.infra.converter.AutorEntityDbToAutorConverter;
+import com.arquitetura.infra.entities.AutorEntityDb;
 
 class AutorEntityDbToAutorAdapterTest {
 
@@ -17,7 +18,7 @@ class AutorEntityDbToAutorAdapterTest {
 		AutorEntityDb autorEntityDb = new AutorEntityDb();		
 		
 		assertInstanceOf(Autor.class, 
-				new AutorEntityDbToAutorAdapter(autorEntityDb).toAutor());
+				new AutorEntityDbToAutorConverter(autorEntityDb).toAutor());
 	}
 	
 	@Test
@@ -30,6 +31,6 @@ class AutorEntityDbToAutorAdapterTest {
 		
 		assertInstanceOf(
 				listExpected.get(0).getClass(), 
-				new AutorEntityDbToAutorAdapter(listAutorEntityDb).toListAutor().get(0));
+				new AutorEntityDbToAutorConverter(listAutorEntityDb).toListAutor().get(0));
 	}
 }

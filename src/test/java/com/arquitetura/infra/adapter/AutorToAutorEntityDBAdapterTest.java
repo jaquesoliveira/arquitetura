@@ -5,7 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import org.junit.jupiter.api.Test;
 
 import com.arquitetura.domain.entity.Autor;
-import com.arquitetura.infra.entity.AutorEntityDb;
+import com.arquitetura.infra.converter.AutorToAutorEntityDBConverter;
+import com.arquitetura.infra.entities.AutorEntityDb;
 
 class AutorToAutorEntityDBAdapterTest {
 
@@ -14,6 +15,6 @@ class AutorToAutorEntityDBAdapterTest {
 		Autor autor = new Autor();		
 		
 		assertInstanceOf(AutorEntityDb.class, 
-				new AutorToAutorEntityDBAdapter(autor).toAutorEntityDb());
+				new AutorToAutorEntityDBConverter(autor).toAutorEntityDb());
 	}
 }

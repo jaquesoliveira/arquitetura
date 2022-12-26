@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.arquitetura.application.api.responseDTO.AutorErroDTO;
+import com.arquitetura.application.exceptions.AutorErroDTO;
 import com.arquitetura.application.exceptions.AutorNotFoundException;
 
 @ControllerAdvice(basePackages = "com.arquitetura.application.api.controller")
@@ -18,6 +18,6 @@ public class AutorControllerAdvice {
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	@ExceptionHandler(AutorNotFoundException.class)
 	public AutorErroDTO handleAutorNotFound(AutorNotFoundException autorNotFoundException) {
-		return new AutorErroDTO("Autor não encontrado", null, HttpStatus.NOT_FOUND.value(), new Date());
+		return new AutorErroDTO("Autor não encontrado", HttpStatus.NOT_FOUND.value(), new Date());
 	}
 }

@@ -1,14 +1,14 @@
-package com.arquitetura.infra.adapter;
+package com.arquitetura.infra.converter;
 
 import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.domain.entity.AutorEntity;
-import com.arquitetura.infra.entity.AutorEntityDb;
+import com.arquitetura.infra.entities.AutorEntityDb;
 
-public class AutorToAutorEntityDBAdapter {
+public class AutorToAutorEntityDBConverter {
 	
 	private AutorEntity autor;
 	
-	public AutorToAutorEntityDBAdapter(Autor autor) {
+	public AutorToAutorEntityDBConverter(Autor autor) {
 		this.autor = autor;
 	}
 

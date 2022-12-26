@@ -6,9 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.domain.entity.Livro;
-import com.arquitetura.infra.entity.AutorEntityDb;
-import com.arquitetura.infra.entity.EditoraEntityDb;
-import com.arquitetura.infra.entity.LivroEntityDb;
+import com.arquitetura.infra.converter.LivroEntityDbToLivroConverter;
+import com.arquitetura.infra.entities.AutorEntityDb;
+import com.arquitetura.infra.entities.EditoraEntityDb;
+import com.arquitetura.infra.entities.LivroEntityDb;
 
 class LivroEntityDbToLivroAdapterTest {
 
@@ -19,6 +20,6 @@ class LivroEntityDbToLivroAdapterTest {
 		livroEntityDb.setEditoraEntityDb(new EditoraEntityDb());
 		
 		assertInstanceOf(Livro.class, 
-				new LivroEntityDbToLivroAdapter(livroEntityDb).toLivro());
+				new LivroEntityDbToLivroConverter(livroEntityDb).toLivro());
 	}
 }

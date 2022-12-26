@@ -4,7 +4,7 @@ import com.arquitetura.domain.entity.Autor;
 import com.arquitetura.domain.service.AutorDomainService;
 
 public class AutorDomainServiceImpl implements AutorDomainService {
-
+	
 	@Override
 	public void validarSaveAutor(Autor autor) {
 		if (autor.getName() == null || autor.getName().isEmpty()) {

@@ -2,6 +2,7 @@ package com.arquitetura.application.api.controller;
 
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,27 +27,28 @@ public class AutorController {
 		this.autorFacade = autorFacade;
 	}
 	
-	@GetMapping
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Autor> listAll(){
 		return autorFacade.listAll();
 	}	
 	
-	@PostMapping
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public Autor save(@RequestBody Autor autor) {
 		return autorFacade.salvar(autor);
 	}
 	
-	@PutMapping
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public Autor edit(@RequestBody Autor autor) {
 		return autorFacade.edit(autor);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void ecluir(@PathVariable Long id) {
+	public void excluir(@PathVariable Long id) {
 		autorFacade.excluir(id);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping( "/{id}")
 	public ResponseEntity<Object> consultarPorId(@PathVariable Long id) {
 		
 		Autor result = autorFacade.consultarPorId(id);
